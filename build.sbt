@@ -1,10 +1,10 @@
 import sbt.Keys.autoCompilerPlugins
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
-val dottyVersion = "3.6.2"
-val dottyCpsAsyncVersion = "0.9.23"
+val dottyVersion = "3.3.4"
+val dottyCpsAsyncVersion = "1.0.0"
 
-ThisBuild/version := "0.9.23"
+ThisBuild/version := "1.0.0-M1"
 ThisBuild/versionScheme := Some("semver-spec")
 ThisBuild/organization := "com.github.rssh"
 ThisBuild/resolvers += Resolver.mavenLocal
@@ -14,12 +14,12 @@ Global / concurrentRestrictions += Tags.limit(ScalaJSTags.Link, 1)
 
 lazy val commonSettings = Seq(
    scalaVersion := dottyVersion,
-   libraryDependencies += "com.github.rssh" %%% "dotty-cps-async-next" % dottyCpsAsyncVersion,
+   libraryDependencies += "io.github.dotty-cps-async" %%% "dotty-cps-async" % dottyCpsAsyncVersion,
    libraryDependencies += "org.scalameta" %%% "munit" % "1.0.3" % Test,
    testFrameworks += new TestFramework("munit.Framework"),
    scalacOptions ++= Seq( "-Wvalue-discard", "-Wnonunit-statement"),
    autoCompilerPlugins := true,
-   addCompilerPlugin("com.github.rssh" %% "dotty-cps-async-compiler-plugin" % dottyCpsAsyncVersion)
+   addCompilerPlugin("io.github.dotty-cps-async" %% "dotty-cps-async-compiler-plugin" % dottyCpsAsyncVersion)
 )
 
 
@@ -102,9 +102,9 @@ lazy val zio2  = crossProject(JSPlatform,JVMPlatform)
     commonSettings,
     name := "cps-async-connect-zio2-next",
     libraryDependencies ++= Seq(
-      "dev.zio" %%% "zio" % "2.1.13",
-      "dev.zio" %%% "zio-managed" % "2.1.13",
-      "dev.zio" %%% "zio-streams" % "2.1.13",
+      "dev.zio" %%% "zio" % "2.1.14",
+      "dev.zio" %%% "zio-managed" % "2.1.14",
+      "dev.zio" %%% "zio-streams" % "2.1.14",
     )
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
@@ -160,7 +160,7 @@ lazy val streamPekko = (project in file("stream-pekko")).
     name := "cps-async-connect-pekko-stream-next",
     scalacOptions += "-explain",
     libraryDependencies ++= Seq(
-      ("org.apache.pekko" %% "pekko-stream" % "1.1.2")
+      ("org.apache.pekko" %% "pekko-stream" % "1.1.3")
     )
   )
 
