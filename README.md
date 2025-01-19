@@ -6,19 +6,19 @@
 ## cats-effects:
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-cats-effect" % version  
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-cats-effect" % version  
 ```
 
 And if you want to use JDK-21 virtual threads for translation of high-order function arguments:
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-cats-effect-loom" % version  
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-cats-effect-loom" % version  
 ```
 
 If you use scala lts versinm then use artefacts with lts suffix:
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-cats-effect-lts" % version  
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-cats-effect-lts" % version  
 ```
 
 Usage:
@@ -97,13 +97,15 @@ async[IO] {
  and Fiber which evaluated this code will be canceled during `doSomething`,  then finally block will be executed.
 
 Note, that execution model in this case will be differ from traditional java try-catch-finally:
+ * it is impossible to catch CancellationException in the catch block.
+ * during cancellation, exception from finalizers will not be propagated as outcome of cancelled Fiber, but instead 
+      will be reported to the exception handler of the IO execution pool.
+ * when finalizer is executed not during cancellation, but during normal completion, then exception will be propagated as outcome of the Fiber.
 
-      * it is impossible to catch CancellationException in the catch block.
-      * during cancellation, exception from finalizers will not be propagated as outcome of cancelled Fiber, but instead 
-         will be reported to the exception handler of the IO execution pool.
-      * when finalizer is executed not during cancellation, but during normal completion, then exception will be propagated as outcome of the Fiber.
-
+<!--
 Next code is an example of handling 
+
+-->
 
 
 # monix:
@@ -147,7 +149,7 @@ def intStream() = asyncStream[Observable[Int]] { out =>
 ## scalaz IO:
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-scalaz" % version  
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-scalaz" % version  
 ```
 
   * IO - cps.monads.scalaz.scalazIO  (implements CpsTryMonad)
@@ -158,19 +160,19 @@ def intStream() = asyncStream[Observable[Int]] { out =>
 for 1.x:
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-zio" % version 
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-zio" % version 
 ```
 
 for 2.x:
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-zio2" % version
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-zio2" % version
 ```
 
 and for loom support on JDK21+ :
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-zio2-loom" % version
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-zio2-loom" % version
 ```
 
 
@@ -231,7 +233,7 @@ val stream = asyncStream[Stream[Throwable,Int]] { out =>
 
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-akka-stream" % version  
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-akka-stream" % version  
 ```
 
 Generator syntax for akka source.
@@ -240,7 +242,7 @@ Generator syntax for akka source.
 ## fs2 streams
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-fs2" % version
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-fs2" % version
 ```
 
 Generator syntax for fs2
@@ -248,7 +250,7 @@ Generator syntax for fs2
 ## pekko-streams
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-pekko-stream" % version  
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-pekko-stream" % version  
 ```
 
 Generator syntax for pekko source.
@@ -257,7 +259,7 @@ Generator syntax for pekko source.
 ## probability monad
 
 ```
-  libraryDependencies += "com.github.rssh" %%% "cps-async-connect-probability-monad" % version
+  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-probability-monad" % version
 ```
 
 CpsTryMonad instance for Distribution monad.
