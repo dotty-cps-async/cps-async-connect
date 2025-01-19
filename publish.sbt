@@ -1,12 +1,18 @@
-credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")
+import xerial.sbt.Sonatype.sonatypeCentralHost
 
-ThisBuild / organization := "com.github.rssh"
-ThisBuild / organizationName := "rssh"
-ThisBuild / organizationHomepage := Some(url("https://github.com/rssh"))
+ThisBuild/sonatypeCredentialHost := sonatypeCentralHost
+ThisBuild/publishTo := sonatypePublishToBundle.value
+
+
+credentials += Credentials(Path.userHome / ".sbt" / "central_sonatype_credentials")
+
+ThisBuild / organization := "io.github.dotty-cps-async"
+ThisBuild / organizationName := "dotty-cps-async"
+ThisBuild / organizationHomepage := Some(url("https://github.com/dotty-cps-async"))
 
 ThisBuild / scmInfo := Some(
        ScmInfo(
-          url("https://github.com/rssh/cps-async-connect"),
+          url("https://github.com/dotty-cps-async/cps-async-connect"),
           "scm:git@github.com:rssh/cps-async-connect.git"
        )
 )
@@ -24,14 +30,9 @@ ThisBuild / developers := List(
 
 ThisBuild / description := "cps-async-connect: integration of dotty-cps-async with effect stacks"
 ThisBuild / licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt"))
-ThisBuild / homepage := Some(url("https://github.com/rssh/cps-async-connect"))
+ThisBuild / homepage := Some(url("https://github.com/dotty-cps-async/cps-async-connect"))
 
 ThisBuild / pomIncludeRepository := { _ => false }
-ThisBuild / publishTo := {
-       val nexus = "https://oss.sonatype.org/"
-       if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
-       else Some("releases" at nexus + "service/local/staging/deploy/maven2")
-}
 ThisBuild / publishMavenStyle := true
 
 

@@ -1,13 +1,17 @@
 import sbt.Keys.autoCompilerPlugins
+import xerial.sbt.Sonatype.sonatypeCentralHost
+
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
 val dottyVersion = "3.3.4"
 val dottyCpsAsyncVersion = "1.0.0"
 
-ThisBuild/version := "1.0.0-M1"
+ThisBuild/version := "1.0.0"
 ThisBuild/versionScheme := Some("semver-spec")
-ThisBuild/organization := "com.github.rssh"
+ThisBuild/organization := "io.github.dotty-cps-async"
 ThisBuild/resolvers += Resolver.mavenLocal
+ThisBuild/sonatypeCredentialHost := sonatypeCentralHost
+ThisBuild/publishTo := sonatypePublishToBundle.value
 
 Global / concurrentRestrictions += Tags.limit(ScalaJSTags.Link, 1)
 Global / concurrentRestrictions += Tags.limit(ScalaJSTags.Link, 1)
@@ -56,7 +60,7 @@ lazy val catsEffectLoom = project.in(file("cats-effect-loom"))
                                      commonSettings,
                                      name := "cps-async-connect-cats-effect-loom",
                                      libraryDependencies ++= Seq(
-                                       "com.github.rssh" %% "dotty-cps-async-loom" % dottyCpsAsyncVersion,
+                                       "io.github.dotty-cps-async" %% "dotty-cps-async-loom" % dottyCpsAsyncVersion,
                                        "org.typelevel" %%% "munit-cats-effect" % "2.0.0" % Test
                                      ),
                                      scalacOptions += "-Xtarget:21"
@@ -125,7 +129,7 @@ lazy val zio2Loom = project.in(file("zio2-loom"))
     commonSettings,
     name := "cps-async-connect-zio2-loom-next",
     libraryDependencies ++= Seq(
-      "com.github.rssh" %% "dotty-cps-async-loom" % dottyCpsAsyncVersion
+      "io.github.dotty-cps-async" %% "dotty-cps-async-loom" % dottyCpsAsyncVersion
     ),
     scalacOptions += "-Xtarget:21"
   )
