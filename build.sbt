@@ -31,7 +31,7 @@ lazy val scalaz  = crossProject(JSPlatform, JVMPlatform)
   .in(file("scalaz"))
   .settings(
     commonSettings,
-    name := "cps-async-connect-scalaz-next",
+    name := "cps-async-connect-scalaz",
     libraryDependencies += "org.scalaz" %%% "scalaz-effect" % "7.4.0-M14" ,
     libraryDependencies += "org.scalaz" %%% "scalaz-core" % "7.4.0-M14" 
   ).jsSettings(
@@ -44,7 +44,7 @@ lazy val catsEffect  = crossProject(JSPlatform, JVMPlatform)
   .in(file("cats-effect"))
   .settings(
     commonSettings,
-    name := "cps-async-connect-cats-effect-next",
+    name := "cps-async-connect-cats-effect",
     libraryDependencies += "org.typelevel" %%% "cats-effect" % "3.5.7",
     libraryDependencies += "org.typelevel" %%% "munit-cats-effect" % "2.0.0" % Test
   ).jsSettings(
@@ -71,7 +71,7 @@ lazy val monix  = crossProject(JSPlatform, JVMPlatform)
   .in(file("monix"))
   .settings(
     commonSettings,
-    name := "cps-async-connect-monix-next",
+    name := "cps-async-connect-monix",
     libraryDependencies += "io.monix" %%% "monix" % "3.4.1",
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
@@ -83,7 +83,7 @@ lazy val zio  = crossProject(JSPlatform, JVMPlatform)
   .in(file("zio"))
   .settings(
     commonSettings,
-    name := "cps-async-connect-zio-next",
+    name := "cps-async-connect-zio",
     libraryDependencies ++= Seq(
       "dev.zio" %%% "zio" % "1.0.18",
       "dev.zio" %%% "zio-streams" % "1.0.18",
@@ -104,7 +104,7 @@ lazy val zio2  = crossProject(JSPlatform,JVMPlatform)
   .in(file("zio2"))
   .settings(
     commonSettings,
-    name := "cps-async-connect-zio2-next",
+    name := "cps-async-connect-zio2",
     libraryDependencies ++= Seq(
       "dev.zio" %%% "zio" % "2.1.14",
       "dev.zio" %%% "zio-managed" % "2.1.14",
@@ -127,7 +127,7 @@ lazy val zio2Loom = project.in(file("zio2-loom"))
   .dependsOn(zio2.jvm)
   .settings(
     commonSettings,
-    name := "cps-async-connect-zio2-loom-next",
+    name := "cps-async-connect-zio2-loom",
     libraryDependencies ++= Seq(
       "io.github.dotty-cps-async" %% "dotty-cps-async-loom" % dottyCpsAsyncVersion
     ),
@@ -140,7 +140,7 @@ lazy val streamFs2 = crossProject(JSPlatform, JVMPlatform)
                      .dependsOn(catsEffect)
                      .settings(
                          commonSettings,
-                         name := "cps-async-connect-fs2-next",
+                         name := "cps-async-connect-fs2",
                          libraryDependencies ++= Seq(
                              "co.fs2" %%% "fs2-core" % "3.11.0",
                              "org.typelevel" %%% "munit-cats-effect" % "2.0.0" % Test
@@ -150,7 +150,7 @@ lazy val streamFs2 = crossProject(JSPlatform, JVMPlatform)
 lazy val streamAkka = (project in file("stream-akka")).
                       settings(
                          commonSettings,
-                         name := "cps-async-connect-akka-stream-next",
+                         name := "cps-async-connect-akka-stream",
                          scalacOptions += "-explain",
                          resolvers += "Akka library repository".at("https://repo.akka.io/maven"),
                          libraryDependencies ++= Seq(
@@ -161,7 +161,7 @@ lazy val streamAkka = (project in file("stream-akka")).
 lazy val streamPekko = (project in file("stream-pekko")).
   settings(
     commonSettings,
-    name := "cps-async-connect-pekko-stream-next",
+    name := "cps-async-connect-pekko-stream",
     scalacOptions += "-explain",
     libraryDependencies ++= Seq(
       ("org.apache.pekko" %% "pekko-stream" % "1.1.3")
@@ -172,7 +172,7 @@ lazy val streamPekko = (project in file("stream-pekko")).
 lazy val probabilityMonad = (project in file("probability-monad")).
                              settings(
                                commonSettings,
-                               name := "cps-async-connect-probabiliy-monad-next",
+                               name := "cps-async-connect-probabiliy-monad",
                                libraryDependencies ++= Seq(
                                   ("org.jliszka" %%% "probability-monad" % "1.0.4").cross(CrossVersion.for3Use2_13)
                                )
