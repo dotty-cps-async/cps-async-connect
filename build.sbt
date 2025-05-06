@@ -3,10 +3,10 @@ import xerial.sbt.Sonatype.sonatypeCentralHost
 
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
-val dottyVersion = "3.3.4"
+val dottyVersion = "3.3.5"
 val dottyCpsAsyncVersion = "1.0.0"
 
-ThisBuild/version := "1.0.0"
+ThisBuild/version := "1.0.2-SNAPSHOT"
 ThisBuild/versionScheme := Some("semver-spec")
 ThisBuild/organization := "io.github.dotty-cps-async"
 ThisBuild/resolvers += Resolver.mavenLocal
@@ -19,7 +19,7 @@ Global / concurrentRestrictions += Tags.limit(ScalaJSTags.Link, 1)
 lazy val commonSettings = Seq(
    scalaVersion := dottyVersion,
    libraryDependencies += "io.github.dotty-cps-async" %%% "dotty-cps-async" % dottyCpsAsyncVersion,
-   libraryDependencies += "org.scalameta" %%% "munit" % "1.0.3" % Test,
+   libraryDependencies += "org.scalameta" %%% "munit" % "1.0.4" % Test,
    testFrameworks += new TestFramework("munit.Framework"),
    scalacOptions ++= Seq( "-Wvalue-discard", "-Wnonunit-statement"),
    autoCompilerPlugins := true,
@@ -45,8 +45,8 @@ lazy val catsEffect  = crossProject(JSPlatform, JVMPlatform)
   .settings(
     commonSettings,
     name := "cps-async-connect-cats-effect",
-    libraryDependencies += "org.typelevel" %%% "cats-effect" % "3.5.7",
-    libraryDependencies += "org.typelevel" %%% "munit-cats-effect" % "2.0.0" % Test
+    libraryDependencies += "org.typelevel" %%% "cats-effect" % "3.6.1",
+    libraryDependencies += "org.typelevel" %%% "munit-cats-effect" % "2.1.0" % Test
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
     scalaJSUseMainModuleInitializer := true,
@@ -61,7 +61,7 @@ lazy val catsEffectLoom = project.in(file("cats-effect-loom"))
                                      name := "cps-async-connect-cats-effect-loom",
                                      libraryDependencies ++= Seq(
                                        "io.github.dotty-cps-async" %% "dotty-cps-async-loom" % dottyCpsAsyncVersion,
-                                       "org.typelevel" %%% "munit-cats-effect" % "2.0.0" % Test
+                                       "org.typelevel" %%% "munit-cats-effect" % "2.1.0" % Test
                                      ),
                                      scalacOptions += "-Xtarget:21"
                                  )
@@ -179,7 +179,7 @@ lazy val probabilityMonad = (project in file("probability-monad")).
                              )
 
 
-lazy val root = (project in file("."))
+lazy val cpsAsyncConnect = (project in file("."))
                 .aggregate(catsEffect.jvm, catsEffect.js,
                            catsEffectLoom,
                            monix.jvm, monix.js,
@@ -191,11 +191,6 @@ lazy val root = (project in file("."))
                            streamAkka,
                            streamPekko,
                            probabilityMonad
-                )
-                .settings(
-                   publish := {},
-                   publishLocal := {},
-                   publishArtifact := false
                 )
 
 
