@@ -4,7 +4,7 @@ import xerial.sbt.Sonatype.sonatypeCentralHost
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
 val dottyVersion = "3.3.5"
-val dottyCpsAsyncVersion = "1.0.0"
+val dottyCpsAsyncVersion = "1.0.2"
 
 ThisBuild/version := "1.0.2-SNAPSHOT"
 ThisBuild/versionScheme := Some("semver-spec")
