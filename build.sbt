@@ -142,8 +142,8 @@ lazy val streamFs2 = crossProject(JSPlatform, JVMPlatform)
                          commonSettings,
                          name := "cps-async-connect-fs2",
                          libraryDependencies ++= Seq(
-                             "co.fs2" %%% "fs2-core" % "3.11.0",
-                             "org.typelevel" %%% "munit-cats-effect" % "2.0.0" % Test
+                             "co.fs2" %%% "fs2-core" % "3.12.0",
+                             "org.typelevel" %%% "munit-cats-effect" % "2.1.0" % Test
                          )
                       )
 
