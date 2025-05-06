@@ -90,7 +90,7 @@ class CatsAsync[F[_]](using Async[F]) extends CatsMonadThrow[F] with CpsAsyncEff
 
 end CatsAsync
 
-class CatsAsyncCancel[F[_]](using Async[F], MonadCancel[F, Throwable]) extends CatsMonadCancel[F] with CpsAsyncEffectMonadInstanceContext[F]:
+trait CatsAsyncCancel[F[_]](using Async[F], MonadCancel[F, Throwable]) extends CatsMonadCancel[F] with CpsAsyncEffectMonadInstanceContext[F]:
 
   override def poorMansDelay[A](a: => A) = summon[Async[F]].delay(a)
 
