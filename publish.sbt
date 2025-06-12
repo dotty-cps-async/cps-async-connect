@@ -1,8 +1,3 @@
-import xerial.sbt.Sonatype.sonatypeCentralHost
-
-ThisBuild/sonatypeCredentialHost := sonatypeCentralHost
-ThisBuild/publishTo := sonatypePublishToBundle.value
-
 
 credentials += Credentials(Path.userHome / ".sbt" / "central_sonatype_credentials")
 

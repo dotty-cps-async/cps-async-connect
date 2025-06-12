@@ -1,17 +1,15 @@
 import sbt.Keys.autoCompilerPlugins
-import xerial.sbt.Sonatype.sonatypeCentralHost
 
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
-val dottyVersion = "3.3.5"
-val dottyCpsAsyncVersion = "1.0.2"
+val dottyVersion = "3.3.6"
+val dottyCpsAsyncVersion = "1.0.3"
 
-ThisBuild/version := "1.0.2-SNAPSHOT"
+ThisBuild/version := "1.0.3-SNAPSHOT"
 ThisBuild/versionScheme := Some("semver-spec")
 ThisBuild/organization := "io.github.dotty-cps-async"
 ThisBuild/resolvers += Resolver.mavenLocal
-ThisBuild/sonatypeCredentialHost := sonatypeCentralHost
-ThisBuild/publishTo := sonatypePublishToBundle.value
+ThisBuild/publishTo := localStaging.value
 
 Global / concurrentRestrictions += Tags.limit(ScalaJSTags.Link, 1)
 Global / concurrentRestrictions += Tags.limit(ScalaJSTags.Link, 1)
