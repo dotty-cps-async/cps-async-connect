@@ -152,7 +152,7 @@ lazy val streamAkka = (project in file("stream-akka")).
                          scalacOptions += "-explain",
                          resolvers += "Akka library repository".at("https://repo.akka.io/maven"),
                          libraryDependencies ++= Seq(
-                            ("com.typesafe.akka" %% "akka-stream" % "2.10.5")
+                            ("com.typesafe.akka" %% "akka-stream" % "2.10.6")
                          )
                       )
 
