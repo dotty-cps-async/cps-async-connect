@@ -5,7 +5,7 @@ import sbt.Keys.autoCompilerPlugins
 val dottyVersion = "3.3.6"
 val dottyCpsAsyncVersion = "1.1.0"
 
-ThisBuild/version := "1.1.0-SNAPSHOT"
+ThisBuild/version := "1.1.0"
 ThisBuild/versionScheme := Some("semver-spec")
 ThisBuild/organization := "io.github.dotty-cps-async"
 ThisBuild/resolvers += Resolver.mavenLocal
