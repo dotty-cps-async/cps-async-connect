@@ -15,11 +15,6 @@ And if you want to use JDK-21 virtual threads for translation of high-order func
   libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-cats-effect-loom" % version  
 ```
 
-If you use scala lts versinm then use artefacts with lts suffix:
-
-```
-  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-cats-effect-lts" % version  
-```
 
 Usage:
 
