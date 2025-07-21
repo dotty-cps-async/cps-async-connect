@@ -3,7 +3,7 @@ import sbt.Keys.autoCompilerPlugins
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
 val dottyVersion = "3.3.6"
-val dottyCpsAsyncVersion = "1.1.0"
+val dottyCpsAsyncVersion = "1.1.3-SNAPSHOT"
 
 ThisBuild/version := "1.1.0"
 ThisBuild/versionScheme := Some("semver-spec")
@@ -21,7 +21,7 @@ lazy val commonSettings = Seq(
    testFrameworks += new TestFramework("munit.Framework"),
    scalacOptions ++= Seq( "-Wvalue-discard", "-Wnonunit-statement"),
    autoCompilerPlugins := true,
-   addCompilerPlugin("io.github.dotty-cps-async" %% "dotty-cps-async-compiler-plugin" % dottyCpsAsyncVersion)
+   addCompilerPlugin(("io.github.dotty-cps-async" % "dotty-cps-async-compiler-plugin" % dottyCpsAsyncVersion).cross(CrossVersion.full))
 )
 
 
