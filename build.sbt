@@ -59,7 +59,9 @@ lazy val catsEffectLoom = project.in(file("cats-effect-loom"))
                                      name := "cps-async-connect-cats-effect-loom",
                                      libraryDependencies ++= Seq(
                                        "io.github.dotty-cps-async" %% "dotty-cps-async-loom" % dottyCpsAsyncVersion,
-                                       "org.typelevel" %%% "munit-cats-effect" % "2.1.0" % Test
+                                       "org.typelevel" %%% "munit-cats-effect" % "2.1.0" % Test,
+                                       "co.fs2" %% "fs2-core" % "3.12.2" % Test,
+                                       "co.fs2" %% "fs2-io" % "3.12.2" % Test
                                      ),
                                      scalacOptions += "-Xtarget:21"
                                  )
