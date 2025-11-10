@@ -7,7 +7,7 @@ import cats.syntax.all.*
 
 import cps.*
 import cps.monads.catsEffect.given  // CpsMonad[IO] and other basic givens
-import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global.given  // Global Dispatcher provider
+import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global  // Global Dispatcher provider
 
 import munit.CatsEffectSuite
 

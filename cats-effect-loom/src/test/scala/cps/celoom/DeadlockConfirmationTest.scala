@@ -118,7 +118,7 @@ class DeadlockConfirmationTest extends CatsEffectSuite {
   }
   
   test("Global Dispatcher (Parallel default) - should succeed") {
-    import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global.given
+    import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global
     
     println("\n=== TEST WITH GLOBAL DISPATCHER (PARALLEL DEFAULT) ===")
     
@@ -145,7 +145,7 @@ class DeadlockConfirmationTest extends CatsEffectSuite {
   }
 
   test("Parallel Dispatcher - handles 100 concurrent awaits (proves no thread exhaustion)") {
-    import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global.given
+    import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global
     
     println("\n=== TEST 100 CONCURRENT AWAITS ===")
     

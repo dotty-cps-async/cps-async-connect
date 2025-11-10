@@ -5,7 +5,7 @@ import cats.effect.kernel.*
 
 import cps.*
 import cps.monads.catsEffect.given
-import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global.given
+import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global
 
 import munit.CatsEffectSuite
 

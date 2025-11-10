@@ -111,11 +111,10 @@ object CpsCERuntimeAwaitProvider {
      * Automatically initializes a Parallel Dispatcher on first use with default config.
      * The Dispatcher is cleaned up on JVM shutdown.
      * 
-     * Import with: `import CpsCERuntimeAwaitProvider.Implicits.global.given`
+     * Import with: `import CpsCERuntimeAwaitProvider.Implicits.global`
      */
-    object global {
-      given CpsRuntimeAwaitProvider[IO] = GlobalCpsCERuntimeAwaitProvider.globalCpsCERuntimeAwaitProvider
-    }
+     given global:CpsRuntimeAwaitProvider[IO] = GlobalCpsCERuntimeAwaitProvider.globalCpsCERuntimeAwaitProvider
+
   }
         
 }

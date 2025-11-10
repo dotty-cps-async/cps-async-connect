@@ -7,7 +7,7 @@ import cats.effect.*
 import cats.syntax.all.*
 import cps.*
 import cps.monads.catsEffect.given
-import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global.given
+import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global
 
 // WITHOUT this module:
 def example = async[IO] {
@@ -56,7 +56,7 @@ There are two main patterns for using this integration, depending on your applic
 Import the global given instance:
 
 ```scala
-import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global.given
+import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global
 ```
 
 The Dispatcher is automatically created on first use with `IORuntime.global` and cleaned up on JVM shutdown.
@@ -66,7 +66,7 @@ The Dispatcher is automatically created on first use with `IORuntime.global` and
 ```scala
 import cats.effect.*
 import cps.*
-import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global.given
+import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global
 
 object MyApp extends IOApp.Simple {
   def run: IO[Unit] = 
