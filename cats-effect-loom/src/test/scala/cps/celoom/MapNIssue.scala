@@ -5,6 +5,7 @@ import cats.effect.*
 import cats.effect.implicits.*
 import cps.*  
 import cps.monads.catsEffect.given
+import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global.given
 
 object MapNProblemExample:
 

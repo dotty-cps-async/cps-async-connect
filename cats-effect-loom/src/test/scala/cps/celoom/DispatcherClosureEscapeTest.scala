@@ -6,7 +6,8 @@ import cats.*
 import cats.syntax.all.*
 
 import cps.*
-import cps.monads.catsEffect.{given, *}
+import cps.monads.catsEffect.given  // CpsMonad[IO] and other basic givens
+import cps.monads.catsEffect.CpsCERuntimeAwaitProvider.Implicits.global.given  // Global Dispatcher provider
 
 import munit.CatsEffectSuite
 
@@ -16,18 +17,17 @@ import fs2.io.file.{Files, Path}
 import scala.collection.immutable.Map
 
 /**
- * Isolated tests that reproduce the "Dispatcher already closed" issue
- * from cats-effect-loom/docs/issues/dca114.md
- *
- * These tests demonstrate the issue with closures escaping async blocks
- * when they contain nested higher-order functions with await in their arguments.
+ * Tests for closures escaping async blocks with the GlobalCpsCERuntimeAwaitProvider.
+ * 
+ * These tests verify that closures containing await calls can safely escape async blocks
+ * and be executed later, using the global Dispatcher that lives for the application lifetime.
  *
  * Pattern:
  * 1. Inside async block: call HO function with function containing await as argument
  * 2. That HO function returns a closure
  * 3. Inside the returned closure: call another HO function with function containing await
  * 4. Return the closure from the async block
- * 5. Execute the closure outside the async block → "Dispatcher already closed"
+ * 5. Execute the closure outside the async block → Should work with global Dispatcher!
  */
 class DispatcherClosureEscapeTest extends CatsEffectSuite {
 
