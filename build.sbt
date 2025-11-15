@@ -178,7 +178,6 @@ lazy val cpsAsyncConnect = (project in file("."))
                            zio2.jvm,  zio2.js, 
                            zio2Loom,
                            streamFs2.jvm, streamFs2.js,
-                           streamAkka,
                            streamPekko,
                            probabilityMonad
                 )
