@@ -167,7 +167,7 @@ When using custom Dispatcher, you need to propagate the provider through your ap
 
 1. Each `async[IO]` block runs on a JVM virtual thread (Project Loom)
 2. Dispatcher converts `IO` effects to `Future` so they can be awaited
-3. The virtual thread blocks until the `IO` completes. Virtual threads make blocking cheap, so we can write direct-style code that looks synchronous but is actually async.
+3. The virtual thread blocks until the `IO` completes. Virtual threads make blocking cheap, so we can keep virtual thread 'waiting' the result of dispatcher during invocation of the functional argument.
 
 ---
 
