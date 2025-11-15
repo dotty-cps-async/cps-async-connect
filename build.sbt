@@ -147,16 +147,6 @@ lazy val streamFs2 = crossProject(JSPlatform, JVMPlatform)
                          )
                       )
 
-lazy val streamAkka = (project in file("stream-akka")).
-                      settings(
-                         commonSettings,
-                         name := "cps-async-connect-akka-stream",
-                         scalacOptions += "-explain",
-                         resolvers += "Akka library repository".at("https://repo.akka.io/maven"),
-                         libraryDependencies ++= Seq(
-                            ("com.typesafe.akka" %% "akka-stream" % "2.10.9")
-                         )
-                      )
 
 lazy val streamPekko = (project in file("stream-pekko")).
   settings(
@@ -164,7 +154,7 @@ lazy val streamPekko = (project in file("stream-pekko")).
     name := "cps-async-connect-pekko-stream",
     scalacOptions += "-explain",
     libraryDependencies ++= Seq(
-      ("org.apache.pekko" %% "pekko-stream" % "1.2.0")
+      ("org.apache.pekko" %% "pekko-stream" % "1.2.1")
     )
   )
 
