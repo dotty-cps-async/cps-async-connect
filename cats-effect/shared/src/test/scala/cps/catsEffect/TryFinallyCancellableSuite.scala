@@ -223,7 +223,7 @@ class TryFinallyCancellableSuite extends CatsEffectSuite {
     var x = 0
     val run = async[IO] {
       try {
-        await(IO.delay(1))
+        val _ = await(IO.delay(1))
         x = 2
       } finally {
         if (x == 2) then
