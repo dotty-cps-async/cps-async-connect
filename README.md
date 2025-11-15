@@ -224,15 +224,6 @@ val stream = asyncStream[Stream[Throwable,Int]] { out =>
 ```
 
 
-## akka-streams
-
-
-```
-  libraryDependencies += "io.github.dotty-cps-async" %%% "cps-async-connect-akka-stream" % version  
-```
-
-Generator syntax for akka source.
-
 
 ## fs2 streams
 
