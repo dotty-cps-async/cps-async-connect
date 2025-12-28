@@ -3,9 +3,9 @@ import sbt.Keys.autoCompilerPlugins
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
 val dottyVersion = "3.3.7"
-val dottyCpsAsyncVersion = "1.1.5"
+val dottyCpsAsyncVersion = "1.2.0"
 
-ThisBuild/version := "1.1.5"
+ThisBuild/version := "1.2.0"
 ThisBuild/versionScheme := Some("semver-spec")
 ThisBuild/organization := "io.github.dotty-cps-async"
 ThisBuild/resolvers += Resolver.mavenLocal
@@ -154,7 +154,7 @@ lazy val streamPekko = (project in file("stream-pekko")).
     name := "cps-async-connect-pekko-stream",
     scalacOptions += "-explain",
     libraryDependencies ++= Seq(
-      ("org.apache.pekko" %% "pekko-stream" % "1.2.1")
+      ("org.apache.pekko" %% "pekko-stream" % "1.3.0")
     )
   )
 
