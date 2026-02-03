@@ -154,7 +154,7 @@ lazy val streamPekko = (project in file("stream-pekko")).
     name := "cps-async-connect-pekko-stream",
     scalacOptions += "-explain",
     libraryDependencies ++= Seq(
-      ("org.apache.pekko" %% "pekko-stream" % "1.3.0")
+      ("org.apache.pekko" %% "pekko-stream" % "1.4.0")
     )
   )
 
