@@ -3,9 +3,9 @@ import sbt.Keys.autoCompilerPlugins
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
 val dottyVersion = "3.3.7"
-val dottyCpsAsyncVersion = "1.3.0"
+val dottyCpsAsyncVersion = "1.3.1"
 
-ThisBuild/version := "1.3.0"
+ThisBuild/version := "1.3.1"
 ThisBuild/versionScheme := Some("semver-spec")
 ThisBuild/organization := "io.github.dotty-cps-async"
 ThisBuild/resolvers += Resolver.mavenLocal
@@ -17,7 +17,7 @@ Global / concurrentRestrictions += Tags.limit(ScalaJSTags.Link, 1)
 lazy val commonSettings = Seq(
    scalaVersion := dottyVersion,
    libraryDependencies += "io.github.dotty-cps-async" %%% "dotty-cps-async" % dottyCpsAsyncVersion,
-   libraryDependencies += "org.scalameta" %%% "munit" % "1.2.2" % Test,
+   libraryDependencies += "org.scalameta" %%% "munit" % "1.2.3" % Test,
    testFrameworks += new TestFramework("munit.Framework"),
    scalacOptions ++= Seq( "-Wvalue-discard", "-Wnonunit-statement"),
    autoCompilerPlugins := true,
