@@ -38,7 +38,7 @@ lazy val scalaz  = crossProject(JSPlatform, JVMPlatform)
   )
 
 
-lazy val catsEffect  = crossProject(JSPlatform, JVMPlatform)
+lazy val catsEffect  = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("cats-effect"))
   .settings(
     commonSettings,
@@ -135,7 +135,7 @@ lazy val zio2Loom = project.in(file("zio2-loom"))
   )
 
 
-lazy val streamFs2 = crossProject(JSPlatform, JVMPlatform)
+lazy val streamFs2 = crossProject(JSPlatform, JVMPlatform, NativePlatform)
                      .in(file("stream-fs2"))
                      .dependsOn(catsEffect)
                      .settings(
@@ -170,14 +170,14 @@ lazy val probabilityMonad = (project in file("probability-monad")).
 
 
 lazy val cpsAsyncConnect = (project in file("."))
-                .aggregate(catsEffect.jvm, catsEffect.js,
+                .aggregate(catsEffect.jvm, catsEffect.js, catsEffect.native,
                            catsEffectLoom,
                            monix.jvm, monix.js,
                            scalaz.jvm, scalaz.js , 
                            zio.jvm,  zio.js,
                            zio2.jvm,  zio2.js, 
                            zio2Loom,
-                           streamFs2.jvm, streamFs2.js,
+                           streamFs2.jvm, streamFs2.js, streamFs2.native,
                            streamPekko,
                            probabilityMonad
                 )
