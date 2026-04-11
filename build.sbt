@@ -43,8 +43,8 @@ lazy val catsEffect  = crossProject(JSPlatform, JVMPlatform)
   .settings(
     commonSettings,
     name := "cps-async-connect-cats-effect",
-    libraryDependencies += "org.typelevel" %%% "cats-effect" % "3.6.3",
-    libraryDependencies += "org.typelevel" %%% "munit-cats-effect" % "2.1.0" % Test
+    libraryDependencies += "org.typelevel" %%% "cats-effect" % "3.7.0",
+    libraryDependencies += "org.typelevel" %%% "munit-cats-effect" % "2.2.0" % Test
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
     scalaJSUseMainModuleInitializer := true,
@@ -59,9 +59,9 @@ lazy val catsEffectLoom = project.in(file("cats-effect-loom"))
                                      name := "cps-async-connect-cats-effect-loom",
                                      libraryDependencies ++= Seq(
                                        "io.github.dotty-cps-async" %% "dotty-cps-async-loom" % dottyCpsAsyncVersion,
-                                       "org.typelevel" %%% "munit-cats-effect" % "2.1.0" % Test,
-                                       "co.fs2" %% "fs2-core" % "3.12.2" % Test,
-                                       "co.fs2" %% "fs2-io" % "3.12.2" % Test
+                                       "org.typelevel" %%% "munit-cats-effect" % "2.2.0" % Test,
+                                       "co.fs2" %% "fs2-core" % "3.13.0" % Test,
+                                       "co.fs2" %% "fs2-io" % "3.13.0" % Test
                                      ),
                                      scalacOptions += "-Xtarget:21"
                                  )
@@ -106,9 +106,9 @@ lazy val zio2  = crossProject(JSPlatform,JVMPlatform)
     commonSettings,
     name := "cps-async-connect-zio2",
     libraryDependencies ++= Seq(
-      "dev.zio" %%% "zio" % "2.1.24",
-      "dev.zio" %%% "zio-managed" % "2.1.24",
-      "dev.zio" %%% "zio-streams" % "2.1.24",
+      "dev.zio" %%% "zio" % "2.1.25",
+      "dev.zio" %%% "zio-managed" % "2.1.25",
+      "dev.zio" %%% "zio-streams" % "2.1.25",
     )
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
@@ -142,8 +142,8 @@ lazy val streamFs2 = crossProject(JSPlatform, JVMPlatform)
                          commonSettings,
                          name := "cps-async-connect-fs2",
                          libraryDependencies ++= Seq(
-                             "co.fs2" %%% "fs2-core" % "3.12.2",
-                             "org.typelevel" %%% "munit-cats-effect" % "2.1.0" % Test
+                             "co.fs2" %%% "fs2-core" % "3.13.0",
+                             "org.typelevel" %%% "munit-cats-effect" % "2.2.0" % Test
                          )
                       )
 
