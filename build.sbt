@@ -17,7 +17,7 @@ Global / concurrentRestrictions += Tags.limit(ScalaJSTags.Link, 1)
 lazy val commonSettings = Seq(
    scalaVersion := dottyVersion,
    libraryDependencies += "io.github.dotty-cps-async" %%% "dotty-cps-async" % dottyCpsAsyncVersion,
-   libraryDependencies += "org.scalameta" %%% "munit" % "1.2.3" % Test,
+   libraryDependencies += "org.scalameta" %%% "munit" % "1.3.0" % Test,
    testFrameworks += new TestFramework("munit.Framework"),
    scalacOptions ++= Seq( "-Wvalue-discard", "-Wnonunit-statement"),
    autoCompilerPlugins := true,
@@ -30,8 +30,8 @@ lazy val scalaz  = crossProject(JSPlatform, JVMPlatform)
   .settings(
     commonSettings,
     name := "cps-async-connect-scalaz",
-    libraryDependencies += "org.scalaz" %%% "scalaz-effect" % "7.4.0-M15" ,
-    libraryDependencies += "org.scalaz" %%% "scalaz-core" % "7.4.0-M14" 
+    libraryDependencies += "org.scalaz" %%% "scalaz-effect" % "7.4.0-M16" ,
+    libraryDependencies += "org.scalaz" %%% "scalaz-core" % "7.4.0-M16"
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
     scalaJSUseMainModuleInitializer := true
@@ -106,9 +106,9 @@ lazy val zio2  = crossProject(JSPlatform,JVMPlatform)
     commonSettings,
     name := "cps-async-connect-zio2",
     libraryDependencies ++= Seq(
-      "dev.zio" %%% "zio" % "2.1.25",
-      "dev.zio" %%% "zio-managed" % "2.1.25",
-      "dev.zio" %%% "zio-streams" % "2.1.25",
+      "dev.zio" %%% "zio" % "2.1.26",
+      "dev.zio" %%% "zio-managed" % "2.1.26",
+      "dev.zio" %%% "zio-streams" % "2.1.26",
     )
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
@@ -154,7 +154,7 @@ lazy val streamPekko = (project in file("stream-pekko")).
     name := "cps-async-connect-pekko-stream",
     scalacOptions += "-explain",
     libraryDependencies ++= Seq(
-      ("org.apache.pekko" %% "pekko-stream" % "1.4.0")
+      ("org.apache.pekko" %% "pekko-stream" % "1.6.0")
     )
   )
 
