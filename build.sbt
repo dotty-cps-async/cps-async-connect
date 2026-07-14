@@ -170,6 +170,9 @@ lazy val probabilityMonad = (project in file("probability-monad")).
 
 
 lazy val cpsAsyncConnect = (project in file("."))
+                .settings(
+                   scalaVersion := dottyVersion
+                )
                 .aggregate(catsEffect.jvm, catsEffect.js, catsEffect.native,
                            catsEffectLoom,
                            monix.jvm, monix.js,
