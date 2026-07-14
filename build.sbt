@@ -17,7 +17,7 @@ Global / concurrentRestrictions += Tags.limit(ScalaJSTags.Link, 1)
 lazy val commonSettings = Seq(
    scalaVersion := dottyVersion,
    libraryDependencies += "io.github.dotty-cps-async" %%% "dotty-cps-async" % dottyCpsAsyncVersion,
-   libraryDependencies += "org.scalameta" %%% "munit" % "1.3.0" % Test,
+   libraryDependencies += "org.scalameta" %%% "munit" % "1.3.4" % Test,
    testFrameworks += new TestFramework("munit.Framework"),
    scalacOptions ++= Seq( "-Wvalue-discard", "-Wnonunit-statement"),
    autoCompilerPlugins := true,
@@ -92,8 +92,8 @@ lazy val zio  = crossProject(JSPlatform, JVMPlatform)
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
     //scalaJSUseMainModuleInitializer := true,
     libraryDependencies ++= Seq(
-      "io.github.cquiroz" %%% "scala-java-time" % "2.6.0",
-      "io.github.cquiroz" %%% "scala-java-time-tzdb" % "2.6.0"
+      "io.github.cquiroz" %%% "scala-java-time" % "2.7.0",
+      "io.github.cquiroz" %%% "scala-java-time-tzdb" % "2.7.0"
     ),
   ).jvmSettings(
     scalacOptions ++= Seq( "-unchecked", "-Ydebug-trace", "-Ydebug-names", "-Xprint-types",
@@ -114,8 +114,8 @@ lazy val zio2  = crossProject(JSPlatform,JVMPlatform)
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
     //scalaJSUseMainModuleInitializer := true,
     libraryDependencies ++= Seq(
-      "io.github.cquiroz" %%% "scala-java-time" % "2.6.0",
-      "io.github.cquiroz" %%% "scala-java-time-tzdb" % "2.6.0"
+      "io.github.cquiroz" %%% "scala-java-time" % "2.7.0",
+      "io.github.cquiroz" %%% "scala-java-time-tzdb" % "2.7.0"
     ),
   ).jvmSettings(
     scalacOptions ++= Seq( "-unchecked", "-Ydebug-trace", "-Ydebug-names", "-Xprint-types",
