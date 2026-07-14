@@ -2,8 +2,8 @@ import sbt.Keys.autoCompilerPlugins
 
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
-val dottyVersion = "3.3.7"
-val dottyCpsAsyncVersion = "1.3.3"
+val dottyVersion = "3.3.8"
+val dottyCpsAsyncVersion = "1.3.4"
 
 ThisBuild/version := "1.3.3"
 ThisBuild/versionScheme := Some("semver-spec")
