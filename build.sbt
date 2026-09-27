@@ -2,10 +2,10 @@ import sbt.Keys.autoCompilerPlugins
 
 
 //val dottyVersion = "3.4.0-RC1-bin-SNAPSHOT"
-val dottyVersion = "3.3.8"
-val dottyCpsAsyncVersion = "1.3.4"
+val dottyVersion = "3.9.0"
+val dottyCpsAsyncVersion = "1.4.0"
 
-ThisBuild/version := "1.3.4"
+ThisBuild/version := "1.4.0"
 ThisBuild/versionScheme := Some("semver-spec")
 ThisBuild/organization := "io.github.dotty-cps-async"
 ThisBuild/resolvers += Resolver.mavenLocal
@@ -43,7 +43,7 @@ lazy val catsEffect  = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .settings(
     commonSettings,
     name := "cps-async-connect-cats-effect",
-    libraryDependencies += "org.typelevel" %%% "cats-effect" % "3.7.0",
+    libraryDependencies += "org.typelevel" %%% "cats-effect" % "3.7.1",
     libraryDependencies += "org.typelevel" %%% "munit-cats-effect" % "2.2.0" % Test
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
@@ -72,7 +72,7 @@ lazy val monix  = crossProject(JSPlatform, JVMPlatform)
   .settings(
     commonSettings,
     name := "cps-async-connect-monix",
-    libraryDependencies += "io.monix" %%% "monix" % "3.4.1",
+    libraryDependencies += "io.monix" %%% "monix" % "3.5.0",
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
     scalaJSUseMainModuleInitializer := true
@@ -154,7 +154,7 @@ lazy val streamPekko = (project in file("stream-pekko")).
     name := "cps-async-connect-pekko-stream",
     scalacOptions += "-explain",
     libraryDependencies ++= Seq(
-      ("org.apache.pekko" %% "pekko-stream" % "1.6.0")
+      ("org.apache.pekko" %% "pekko-stream" % "1.7.0")
     )
   )
 
@@ -184,5 +184,3 @@ lazy val cpsAsyncConnect = (project in file("."))
                            streamPekko,
                            probabilityMonad
                 )
-
-
